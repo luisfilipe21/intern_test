@@ -8,73 +8,103 @@ import pound from "./assets/pound.svg";
 import secure from "./assets/secure.svg";
 import selected from "./assets/selected.svg";
 
+import style from "./style.module.scss";
+
 function App() {
 
   const [donateValue, setDonateValue] = useState(20);
+  const [selectedDonationMethod, setSelectedDonationMethod] = useState();
 
   console.log(donateValue)
 
   return (
     <section className="container">
-      <div>
+      <div className={style.container}>
 
-        <div>
-          <button>Donate monthly</button>
-          <button>Donate once</button>
+        <div className={style.boxDate}>
+            <button className="btnDate">Donate monthly</button>
+            <button className="btnDate">Donate once</button>
         </div>
-      </div>
 
-      <div>
-        <div>
-          <h3>
-            I would like to make a *monthly" donation of
-          </h3>
 
-          <div>
-            <form onChange={(e) => setDonateValue(e.target.value)} >
+        <div className={style.boxForm}>
+          <div className={style.boxInfoForm}>
+            <h3>
+              I would like to make a *monthly" donation of
+            </h3>
 
-              <label htmlFor="">
-                2
-                <input type="radio" name="donation" value="2" />
+            <form
+              className={style.divForm}
+              onChange={(e) => setDonateValue(e.target.value)} >
+
+              <label>
+                <img src={pound} alt="" />6
+
+                <input
+                  className={style.customRadio}
+                  type="radio"
+                  name="donation"
+                  value="6"
+                />
               </label>
 
-              <label htmlFor="">3
-                <input type="radio" name="donation" value="3" />
+              <label><img src={pound} alt="" />12
+                <input type="radio"
+                  name="donation"
+                  value="12" />
               </label>
 
-              <label htmlFor="">
-                4
-                <input type="radio" name="donation" value="4" />
-              </label>
-              <label htmlFor="">
-                5
-                <input type="radio" name="donation" value="5" />
+              <label>
+                <img src={pound} alt="" />18
+                <input type="radio"
+                  name="donation"
+                  value="18" />
               </label>
 
-              <button type="submit">Donate <img src={pound} />{donateValue} montly <img src={secure} alt="" /></button>
+              <label>
+                <img src={pound} alt="" />30
+                <input type="radio"
+                  name="donation"
+                  value="30" />
+              </label>
+
+              <label>
+                <img src={pound} alt="" /> Another ammout
+                <input type="radio"
+                  name="donation"
+                  value="" />
+              </label>
+
+              <button className="btn" type="submit">
+                Donate <img className={style.imgPound} src={pound} />{donateValue} montly <img className={style.imgLock} src={secure} alt="" />
+              </button>
 
             </form>
 
-            <div>
+            <div className={style.line}>
               <p>
-                <img src={pound} />{donateValue} help an Animal Rescue Team make an urgent animal rescue
+                <img src={pound} />{donateValue} Could help answer and emergency call to our Animal Rescue Line
               </p>
+              <span></span>
             </div>
-          </div>
-          <div>
-            <div>
 
+
+          </div>
+
+          <div className={style.divFooter}>
+            <div className={style.donate}>
               <p>I would like to make a one-off donation</p>
             </div>
 
-            <div>
-        <p>All Direct Debits are protected by the Direct Debit Guarantee.</p>
-        <img src={debit} alt="" />
-        <img src={fundraising} alt="" />
+            <div className={style.rights}>
+              <p>All Direct Debits are protected by the Direct Debit Guarantee.</p>
+              <img src={debit} alt="" />
+              <img src={fundraising} alt="" />
             </div>
 
           </div>
         </div>
+
       </div>
     </section>
   )
