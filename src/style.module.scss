@@ -7,11 +7,20 @@
     flex-direction: column;
     justify-content: center;
 
+
     .boxDate {
         gap: 0.3rem;
         display: flex;
 
 
+        input {
+            display: none;
+        }
+
+        @media(max-width: 500px) {
+            justify-content: space-between;
+
+        }
     }
 
     .boxForm {
@@ -21,34 +30,99 @@
         .boxInfoForm {
             padding: 1rem;
 
+            h3 {
+                font-weight: 700;
+            }
+
             .divForm {
-                padding: 1rem 0;
-                width: 100%;
                 display: flex;
                 align-items: center;
-                justify-content: space-evenly;
-                gap: 0.3rem;
+                padding: 1rem 0;
+                width: 100%;
 
-                label {
+                .divLabel {
                     display: flex;
-                    align-items: center;
-                    justify-content: center;
 
+                    gap: 1rem;
+
+                    label {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-wrap: nowrap;
+
+                        font-weight: 700;
+                        background-color: var(--gray);
+                        border: 1px solid var(--gray2);
+                        width: 60px;
+                        height: 53px;
+                    }
+
+                }
+
+                .dif {
+                    margin: 1rem 0;
+                    width: 80%;
                     font-weight: 700;
                     background-color: var(--gray);
                     border: 1px solid var(--gray2);
-                    width: 90px;
-                    height: 40px;
 
-                    &:focus {
-                        background-color: var(--offBlue);
-                    }
+                    padding: 1rem 0.5rem;
+                    margin: 0 1rem;
                 }
 
                 .imgPound,
                 .imgLock {
-                    margin-left: 1px;
+                    display: flex;
+
+                    margin-left: 0.1rem;
                 }
+
+
+                @media (max-width: 574px) {
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-evenly;
+
+                    .divLabel {
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: center;
+
+                        label {
+                            width: 160px;
+                            height: 40px;
+                        }
+                    }
+
+
+                }
+
+                @media(max-width: 768px) {
+                    flex-direction: column;
+
+
+                    .divLabel {
+                        padding: 0 0.3rem;
+
+                        label {
+                            width: 120px;
+                            height: 60px;
+                        }
+                    }
+
+                    .dif {
+                        margin: 1rem 0;
+                    }
+
+                    .imgPound,
+                    .imgLock {
+                        margin-left: 0.3rem;
+                    }
+
+                }
+
+
             }
 
 
@@ -73,7 +147,6 @@
                     right: 85px;
                 }
             }
-
         }
 
         .divFooter {
@@ -98,9 +171,36 @@
 
                 p {
                     padding-right: 10px;
+                    line-height: 1rem;
+                }
+
+                .images {
+                    display: flex;
                 }
             }
 
+            @media (max-width: 574px) {
+                flex-direction: column-reverse;
+
+                p {
+                    font-size: 14px;
+                    text-align: center;
+                    margin: 1rem 0;
+                }
+
+                .rights {
+                    flex-direction: column-reverse;
+                    
+
+                    .images {
+                        flex-direction: row;
+                        gap: 2rem;
+                        margin: 1rem 0;
+                    }
+                }
+            }
+
+            @media(min-width:768px) {}
 
         }
 

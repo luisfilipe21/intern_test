@@ -13,73 +13,107 @@ import style from "./style.module.scss";
 function App() {
 
   const [donateValue, setDonateValue] = useState(20);
-  const [selectedDonationMethod, setSelectedDonationMethod] = useState();
-
-  console.log(donateValue)
+  const [month, setMonth] = useState(false)
 
   return (
     <section className="container">
-      <div className={style.container}>
+      <form className={style.container}>
 
         <div className={style.boxDate}>
-            <button className="btnDate">Donate monthly</button>
-            <button className="btnDate">Donate once</button>
+
+          {month ?
+            <>
+              <label className="btnMonth" htmlFor="month"  >
+                Donate monthly
+                <input type="radio" id="month" value={"month"} />
+              </label>
+
+              <label htmlFor="once" className="btnMonth" >
+                Donate once
+                <input type="radio" value="once" />
+              </label>
+            </>
+            :
+
+            <>
+              <label className="btnMonth" htmlFor="" checked>
+                Donate monthly
+                <input type="radio" />
+              </label>
+
+              <label htmlFor="" className="btnMonth" >
+                Donate once
+                <input type="radio" />
+              </label>
+            </>}
+
+
+
         </div>
 
 
         <div className={style.boxForm}>
           <div className={style.boxInfoForm}>
             <h3>
-              I would like to make a *monthly" donation of
+              I would like to make a monthly donation of
             </h3>
 
             <form
               className={style.divForm}
               onChange={(e) => setDonateValue(e.target.value)} >
+              <div className={style.divLabel}>
+                <label>
+                  <img src={pound} />6
 
-              <label>
-                <img src={pound} alt="" />6
+                  <input
+                    className={style.customRadio}
+                    type="radio"
+                    name="donation"
+                    value="6"
+                  />
+                </label>
 
-                <input
-                  className={style.customRadio}
-                  type="radio"
-                  name="donation"
-                  value="6"
-                />
-              </label>
+                <label><img src={pound} />12
+                  <input type="radio"
+                    name="donation"
+                    value="12" />
+                </label>
 
-              <label><img src={pound} alt="" />12
-                <input type="radio"
-                  name="donation"
-                  value="12" />
-              </label>
+                <label>
+                  <img src={pound} />18
+                  <input type="radio"
+                    name="donation"
+                    value="18" />
+                </label>
 
-              <label>
-                <img src={pound} alt="" />18
-                <input type="radio"
-                  name="donation"
-                  value="18" />
-              </label>
+                <label>
+                  <img src={pound} />30
+                  <input type="radio"
+                    name="donation"
+                    value="30" />
+                </label>
+              </div>
 
-              <label>
-                <img src={pound} alt="" />30
-                <input type="radio"
-                  name="donation"
-                  value="30" />
-              </label>
+              <div className={style.dif}>
+                <label className="difInput">
+                  <img src={pound} /> Another ammout
+                  <input type="radio"
+                    name="donation"
+                    value=""
+                  />
+                </label>
+              </div>
 
-              <label>
-                <img src={pound} alt="" /> Another ammout
-                <input type="radio"
-                  name="donation"
-                  value="" />
-              </label>
-
-              <button className="btn" type="submit">
-                Donate <img className={style.imgPound} src={pound} />{donateValue} montly <img className={style.imgLock} src={secure} alt="" />
+              <button className={`btn`}>
+                Donate 
+                <img width={15} className={style.imgPound} src={pound}/>
+                 
+                {donateValue} montly
+                <img width={15} className={style.imgLock} src={secure} />
               </button>
 
             </form>
+
 
             <div className={style.line}>
               <p>
@@ -98,14 +132,16 @@ function App() {
 
             <div className={style.rights}>
               <p>All Direct Debits are protected by the Direct Debit Guarantee.</p>
-              <img src={debit} alt="" />
-              <img src={fundraising} alt="" />
+              <div className={style.images}>
+              <img src={debit} />
+              <img src={fundraising} />
+              </div>
             </div>
 
           </div>
         </div>
 
-      </div>
+      </form>
     </section>
   )
 }
