@@ -12,8 +12,20 @@ import style from "./style.module.scss";
 
 function App() {
 
-  const [donateValue, setDonateValue] = useState(20);
-  const [month, setMonth] = useState(false)
+  const [donateValue, setDonateValue] = useState(6);
+  const [month, setMonth] = useState(true)
+
+  const handleEvent = (e) => {
+    console.log(e.target.value);
+    if (e.target.value === "month") {
+      setMonth(true);
+    }
+
+    if (e.target.value === "once") {
+      setMonth(false);
+    }
+
+  }
 
   return (
     <section className="container">
@@ -23,47 +35,47 @@ function App() {
 
           {month ?
             <>
-              <label className="btnMonth" htmlFor="month"  >
+              <label onClick={handleEvent} className="btnMonth" htmlFor="month"  >
                 Donate monthly
                 <input type="radio" id="month" value={"month"} />
               </label>
 
-              <label htmlFor="once" className="btnMonth" >
+              <label onClick={handleEvent} htmlFor="once" className="btnDate" >
                 Donate once
-                <input type="radio" value="once" />
+                <input type="radio" id="once" value={"once"} />
               </label>
             </>
-            :
 
+            :
             <>
-              <label className="btnMonth" htmlFor="" checked>
+              <label onClick={handleEvent} className="btnDate" htmlFor="month"  >
                 Donate monthly
-                <input type="radio" />
+                <input type="radio" id="month" value={"month"} />
               </label>
 
-              <label htmlFor="" className="btnMonth" >
+
+              <label onClick={handleEvent} htmlFor="once" className="btnMonth" >
                 Donate once
-                <input type="radio" />
+                <input type="radio" id="once" value={"once"} />
               </label>
             </>}
-
-
-
         </div>
 
 
         <div className={style.boxForm}>
           <div className={style.boxInfoForm}>
             <h3>
-              I would like to make a monthly donation of
+              {month ? "I would like to make a monthly donation of" :
+                "I would like to make a one-off donation of"}
             </h3>
 
-            <form
+            <div
               className={style.divForm}
               onChange={(e) => setDonateValue(e.target.value)} >
               <div className={style.divLabel}>
                 <label>
-                  <img src={pound} />6
+                  <img src={pound} />
+                  {month ? 6 : 10}
 
                   <input
                     className={style.customRadio}
@@ -73,21 +85,28 @@ function App() {
                   />
                 </label>
 
-                <label><img src={pound} />12
+                <label>
+                  <img src={pound} />
+                  {month ? 12 : 40}
+
                   <input type="radio"
                     name="donation"
                     value="12" />
                 </label>
 
                 <label>
-                  <img src={pound} />18
+                  <img src={pound} />
+                  {month ? 18 : 75}
+
                   <input type="radio"
                     name="donation"
                     value="18" />
                 </label>
 
                 <label>
-                  <img src={pound} />30
+                  <img src={pound} />
+                  {month ? 30 : 100}
+
                   <input type="radio"
                     name="donation"
                     value="30" />
@@ -105,19 +124,25 @@ function App() {
               </div>
 
               <button className={`btn`}>
-                Donate 
-                <img width={15} className={style.imgPound} src={pound}/>
-                 
-                {donateValue} montly
+                Donate
+                <img width={15} className={style.imgPound} src={pound} />
+
+                {donateValue}
+                {month ? "montlhly" : "today"}
+
                 <img width={15} className={style.imgLock} src={secure} />
               </button>
 
-            </form>
+            </div>
 
 
             <div className={style.line}>
               <p>
-                <img src={pound} />{donateValue} Could help answer and emergency call to our Animal Rescue Line
+                <img src={pound} />{donateValue}
+                {month ?
+                  "Could help answer and emergency call to our Animal Rescue Line"
+                  : "Could help an Anumal Rescue Team take on an urgent animal rescue"}
+
               </p>
               <span></span>
             </div>
@@ -127,15 +152,31 @@ function App() {
 
           <div className={style.divFooter}>
             <div className={style.donate}>
-              <p>I would like to make a one-off donation</p>
+              <p>
+                {month ? "I would like to make a one-off donation" : "I would like to give monthly"}
+              </p>
             </div>
 
             <div className={style.rights}>
-              <p>All Direct Debits are protected by the Direct Debit Guarantee.</p>
-              <div className={style.images}>
-              <img src={debit} />
-              <img src={fundraising} />
-              </div>
+              {month ?
+                <>
+                  <p>All Direct Debits are protected by the Direct Debit Guarantee.</p>
+
+                  <div className={style.images}>
+                    <img src={debit} />
+                    <img src={fundraising} />
+                  </div>
+                </>
+
+                :
+                <div className={style.images}>
+                  <img width={50} src={visa} />
+                  <img width={50} src={masterCard} />
+                  <img width={50} src={paypal} />
+                  <img width={50} src={fundraising} />
+                </div>}
+
+
             </div>
 
           </div>
