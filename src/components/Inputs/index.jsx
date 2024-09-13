@@ -1,14 +1,14 @@
 import { forwardRef } from "react"
 import style from "./style.module.scss"
 
-export const Inputs = forwardRef(({ imgSrc, ...rest }, ref) => {
- 
+export const Inputs = forwardRef(({ imgSrc, handleEvent, htmlFor, ...rest }, ref) => {
+
     return (
-        <label >
+        <label htmlFor={htmlFor} onClick={handleEvent}>
             <img src={imgSrc} />
             {rest.value}
 
-            <input 
+            <input
                 ref={ref}
                 {...rest}
             />

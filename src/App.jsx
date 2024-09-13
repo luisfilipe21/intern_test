@@ -20,7 +20,6 @@ function App() {
   const { register, handleSubmit } = useForm();
 
   const handleEvent = (e) => {
-    console.log(e.target.value);
     if (e.target.value === "month") {
       setMonth(true);
     }
@@ -53,7 +52,6 @@ function App() {
                 <input type="radio" id="once" value={"once"} />
               </label>
             </>
-
             :
             <>
               <label onClick={handleEvent} className="btnDate" htmlFor="month"  >
@@ -127,6 +125,7 @@ function App() {
                     imgSrc={pound}
                     secure={secure}
                     donateValue={donateValue}
+                    name={"monthly"}
                   />
                 </div>
               </>
@@ -138,27 +137,23 @@ function App() {
                   className={style.divForm}
                   onChange={donatinValue} >
                   <div className={style.divLabel}>
-
                     <Inputs
                       {...register("donation")}
                       type="radio"
                       value="10"
                       imgSrc={pound}
-
                     />
                     <Inputs
                       {...register("donation")}
                       type="radio"
                       value="40"
                       imgSrc={pound}
-
                     />
                     <Inputs
                       {...register("donation")}
                       type="radio"
                       value="75"
                       imgSrc={pound}
-
                     />
 
                     <Inputs
@@ -166,32 +161,25 @@ function App() {
                       type="radio"
                       value="100"
                       imgSrc={pound}
-
                     />
-
-
                   </div>
 
                   <div className={style.dif}>
-                    <label className="difInput">
-                      <img src={pound} /> Another ammout
-                      <input type="radio"
-                        name="donation"
-                        value=""
-                      />
-                    </label>
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value={" Another ammount"}
+                      imgSrc={pound}
+                    />
+
                   </div>
 
-                  <button className={`btn`}>
-                    Donate
-                    <img width={15} className={style.imgPound} src={pound} />
-
-                    {donateValue}
-                    today
-
-                    <img width={15} className={style.imgLock} src={secure} />
-                  </button>
-
+                  <Buttons
+                    imgSrc={pound}
+                    secure={secure}
+                    donateValue={donateValue}
+                    name={"today"}
+                  />
                 </div>
               </>}
 
