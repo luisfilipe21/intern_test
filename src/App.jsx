@@ -9,11 +9,15 @@ import secure from "./assets/secure.svg";
 import selected from "./assets/selected.svg";
 
 import style from "./style.module.scss";
+import { Inputs } from "./components/Inputs";
+import { useForm } from "react-hook-form";
+import { Buttons } from "./components/Buttons";
 
 function App() {
 
   const [donateValue, setDonateValue] = useState(6);
-  const [month, setMonth] = useState(true)
+  const [month, setMonth] = useState(true);
+  const { register, handleSubmit } = useForm();
 
   const handleEvent = (e) => {
     console.log(e.target.value);
@@ -79,63 +83,51 @@ function App() {
                   className={style.divForm}
                   onChange={donatinValue} >
                   <div className={style.divLabel}>
-                    <label htmlFor="donation">
-                      <img src={pound} />
-                      6
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value="6"
+                      imgSrc={pound}
 
-                      <input
-                        className={style.customRadio}
-                        type="radio"
-                        name="donation"
-                        value="6"
-                      />
-                    </label>
+                    />
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value="12"
+                      imgSrc={pound}
 
-                    <label>
-                      <img src={pound} />
-                       12
+                    />
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value="18"
+                      imgSrc={pound}
 
-                      <input type="radio"
-                        name="donation"
-                        value="12" />
-                    </label>
+                    />
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value="30"
+                      imgSrc={pound}
 
-                    <label>
-                      <img src={pound} />
-                       18
-
-                      <input type="radio"
-                        name="donation"
-                        value="18" />
-                    </label>
-
-                    <label>
-                      <img src={pound} />
-                       30
-
-                      <input type="radio"
-                        name="donation"
-                        value="30" />
-                    </label>
+                    />
                   </div>
 
                   <div className={style.dif}>
-                    <label className="difInput">
-                      <img src={pound} /> Another ammout
-                      <input type="radio"
-                        name="donation"
-                        value=""
-                      />
-                    </label>
+
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value={" Another ammount"}
+                      imgSrc={pound}
+                    />
                   </div>
 
-                  <button className={`btn`}>
-                    Donate
-                    <img width={15} className={style.imgPound} src={pound} />
-
-                    {donateValue} montlhly  <img width={15} className={style.imgLock} src={secure} />
-                  </button>
-
+                  <Buttons
+                    imgSrc={pound}
+                    secure={secure}
+                    donateValue={donateValue}
+                  />
                 </div>
               </>
 
@@ -146,45 +138,38 @@ function App() {
                   className={style.divForm}
                   onChange={donatinValue} >
                   <div className={style.divLabel}>
-                    <label htmlFor="donation">
-                      <img src={pound} />
-                      10
 
-                      <input
-                        className={style.customRadio}
-                        type="radio"
-                        name="donation"
-                        id="donation"
-                        value="10"
-                      />
-                    </label>
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value="10"
+                      imgSrc={pound}
 
-                    <label>
-                      <img src={pound} />
-                      40
+                    />
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value="40"
+                      imgSrc={pound}
 
-                      <input type="radio"
-                        name="donation"
-                        value="40" />
-                    </label>
+                    />
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value="75"
+                      imgSrc={pound}
 
-                    <label>
-                      <img src={pound} />
-                      75
+                    />
 
-                      <input type="radio"
-                        name="donation"
-                        value="72" />
-                    </label>
+                    <Inputs
+                      {...register("donation")}
+                      type="radio"
+                      value="100"
+                      imgSrc={pound}
 
-                    <label>
-                      <img src={pound} />
-                      100
+                    />
 
-                      <input type="radio"
-                        name="donation"
-                        value="100" />
-                    </label>
+
                   </div>
 
                   <div className={style.dif}>
