@@ -27,6 +27,10 @@ function App() {
 
   }
 
+  const donatinValue = (e) => {
+    setDonateValue(e.target.value);
+  }
+
   return (
     <section className="container">
       <form className={style.container}>
@@ -69,85 +73,154 @@ function App() {
                 "I would like to make a one-off donation of"}
             </h3>
 
-            <div
-              className={style.divForm}
-              onChange={(e) => setDonateValue(e.target.value)} >
-              <div className={style.divLabel}>
-                <label>
-                  <img src={pound} />
-                  {month ? 6 : 10}
+            {month ?
+              <>
+                <div
+                  className={style.divForm}
+                  onChange={donatinValue} >
+                  <div className={style.divLabel}>
+                    <label htmlFor="donation">
+                      <img src={pound} />
+                      6
 
-                  <input
-                    className={style.customRadio}
-                    type="radio"
-                    name="donation"
-                    value="6"
-                  />
-                </label>
+                      <input
+                        className={style.customRadio}
+                        type="radio"
+                        name="donation"
+                        value="6"
+                      />
+                    </label>
 
-                <label>
-                  <img src={pound} />
-                  {month ? 12 : 40}
+                    <label>
+                      <img src={pound} />
+                       12
 
-                  <input type="radio"
-                    name="donation"
-                    value="12" />
-                </label>
+                      <input type="radio"
+                        name="donation"
+                        value="12" />
+                    </label>
 
-                <label>
-                  <img src={pound} />
-                  {month ? 18 : 75}
+                    <label>
+                      <img src={pound} />
+                       18
 
-                  <input type="radio"
-                    name="donation"
-                    value="18" />
-                </label>
+                      <input type="radio"
+                        name="donation"
+                        value="18" />
+                    </label>
 
-                <label>
-                  <img src={pound} />
-                  {month ? 30 : 100}
+                    <label>
+                      <img src={pound} />
+                       30
 
-                  <input type="radio"
-                    name="donation"
-                    value="30" />
-                </label>
-              </div>
+                      <input type="radio"
+                        name="donation"
+                        value="30" />
+                    </label>
+                  </div>
 
-              <div className={style.dif}>
-                <label className="difInput">
-                  <img src={pound} /> Another ammout
-                  <input type="radio"
-                    name="donation"
-                    value=""
-                  />
-                </label>
-              </div>
+                  <div className={style.dif}>
+                    <label className="difInput">
+                      <img src={pound} /> Another ammout
+                      <input type="radio"
+                        name="donation"
+                        value=""
+                      />
+                    </label>
+                  </div>
 
-              <button className={`btn`}>
-                Donate
-                <img width={15} className={style.imgPound} src={pound} />
+                  <button className={`btn`}>
+                    Donate
+                    <img width={15} className={style.imgPound} src={pound} />
 
-                {donateValue}
-                {month ? "montlhly" : "today"}
+                    {donateValue} montlhly  <img width={15} className={style.imgLock} src={secure} />
+                  </button>
 
-                <img width={15} className={style.imgLock} src={secure} />
-              </button>
+                </div>
+              </>
 
-            </div>
+              :
+
+              <>
+                <div
+                  className={style.divForm}
+                  onChange={donatinValue} >
+                  <div className={style.divLabel}>
+                    <label htmlFor="donation">
+                      <img src={pound} />
+                      10
+
+                      <input
+                        className={style.customRadio}
+                        type="radio"
+                        name="donation"
+                        id="donation"
+                        value="10"
+                      />
+                    </label>
+
+                    <label>
+                      <img src={pound} />
+                      40
+
+                      <input type="radio"
+                        name="donation"
+                        value="40" />
+                    </label>
+
+                    <label>
+                      <img src={pound} />
+                      75
+
+                      <input type="radio"
+                        name="donation"
+                        value="72" />
+                    </label>
+
+                    <label>
+                      <img src={pound} />
+                      100
+
+                      <input type="radio"
+                        name="donation"
+                        value="100" />
+                    </label>
+                  </div>
+
+                  <div className={style.dif}>
+                    <label className="difInput">
+                      <img src={pound} /> Another ammout
+                      <input type="radio"
+                        name="donation"
+                        value=""
+                      />
+                    </label>
+                  </div>
+
+                  <button className={`btn`}>
+                    Donate
+                    <img width={15} className={style.imgPound} src={pound} />
+
+                    {donateValue}
+                    today
+
+                    <img width={15} className={style.imgLock} src={secure} />
+                  </button>
+
+                </div>
+              </>}
+
 
 
             <div className={style.line}>
               <p>
-                <img src={pound} />{donateValue}
-                {month ?
+                <img src={pound} />{donateValue} {month ?
                   "Could help answer and emergency call to our Animal Rescue Line"
                   : "Could help an Anumal Rescue Team take on an urgent animal rescue"}
 
               </p>
               <span></span>
             </div>
-
-
           </div>
 
           <div className={style.divFooter}>
